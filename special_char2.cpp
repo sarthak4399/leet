@@ -1,10 +1,15 @@
+#include<iostream>
+#include <unordered_set>
+using namespace std ;
+
+
 class Solution {
 public:
     int countSpecialLetters(string word) {
         unordered_set<char> seen;
         int count = 0;
-        
-        for (char c : word) {
+
+        for (char c:word) {
             if (isupper(c)) {
                 char lower_c = tolower(c);
                 if (seen.count(lower_c)) {
@@ -14,7 +19,7 @@ public:
                 seen.insert(c);
             }
         }
-        
+
         return count;
     }
 };

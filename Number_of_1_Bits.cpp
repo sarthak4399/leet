@@ -11,11 +11,10 @@ public:
 
 int main() {
     Solution s;
-    uint32_t n = 000;
+    uint32_t n = 00000000000000000000000000001011;
     int hammingWeight = s.hammingWeight(n);
     std::cout << hammingWeight << std::endl;
     return 0;
+
+
 }
-
-
-

@@ -3,8 +3,6 @@
 #include <vector>
 using namespace std;
 
-
-
 class Solution {
 public:
     string reversePrefix(string word, char ch) {
@@ -14,22 +12,21 @@ public:
             if(word[i] == ch){
                 break;
                 cout << "i: " << i << endl; 
-                // cout << "word[i] : " << word[i] << endl;
+                cout << "word[i] : " << word[i] << endl;
             }
         }
         if(i == n){
-
             return word ;
         }
-        string ans = "";
 
+        string ans = "";
         for(int j = i ; j >= 0 ; j--){
             ans += word[j];
-            // cout << "ans first ffor : " << ans << endl;
+            cout << "ans first ffor : " << ans << endl;
         }
         for(int j = i+1 ; j < n ; j++){
             ans += word[j];
-            // cout << "ans second for : " << ans << endl;
+            cout << "ans second for : " << ans << endl;
         }
         return ans;
     }
@@ -37,6 +34,6 @@ public:
 
 int main(){
     Solution s ;
-    cout << s.reversePrefix("abcdef", 'd') << endl;
+    cout << s.reversePrefix("sarthak", 'a') << endl;
     return 0;
 }

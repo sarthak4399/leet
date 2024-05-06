@@ -49,7 +49,7 @@ int main() {
     head->next = new ListNode(5);
     head->next->next = new ListNode(1);
     head->next->next->next = new ListNode(9);
-    s.deleteNode(head->next, 5);
+    s.deleteNode(head->next);
     cout << "The linked list after deleting the node is: ";
     for (ListNode* temp = head; temp != NULL; temp = temp->next) {
         cout << temp->val << " ";

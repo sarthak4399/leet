@@ -6,6 +6,8 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "new": "cpp",
+        "__locale": "cpp"
     }
 }

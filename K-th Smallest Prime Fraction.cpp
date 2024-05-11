@@ -36,6 +36,7 @@ public:
     // }
 
     /**
+    * @author Sarthak Khandare
     * @note Binary Search 
     */
     double left = 0, right = 1;
@@ -62,7 +63,6 @@ public:
             return ans;
         }
     };
-  
 
 int main() {
     Solution s;

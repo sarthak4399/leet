@@ -25,6 +25,7 @@ using namespace std ;
  * @timeComplexity O(nlogn)
  * @spaceComplexity O(n)
 */
+#pragma GCC optimize("O3", "unroll-loops")
 class Solution {
 public:
     double mincostToHireWorkers(vector<int>& quality, vector<int>& wage, int k) {

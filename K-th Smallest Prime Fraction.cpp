@@ -36,8 +36,8 @@ public:
     // }
 
     /**
-    * @author Sarthak Khandare
-    * @note Binary Search 
+    * @author Sarthak Khandare 
+    * 
     */
     double left = 0, right = 1;
             vector<int> ans(2);

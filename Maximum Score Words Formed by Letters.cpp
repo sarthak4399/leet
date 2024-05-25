@@ -2,8 +2,6 @@
 #include <vector>
 using namespace std ;
 
-
-
 class Solution {
 public:
     int a[26], b[26], ans = 0;

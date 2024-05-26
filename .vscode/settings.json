@@ -8,6 +8,7 @@
         "queue": "cpp",
         "stack": "cpp",
         "new": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "string": "cpp"
     }
 }

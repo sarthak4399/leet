@@ -7,9 +7,10 @@ using namespace std ;
 class Solution {
 public:
     vector<string> wordBreak(string s, vector<string>& wordDict) {
-        cout << "s: " << s << endl;
+        // cout << "s: " << s << endl;
         vector<string> ans;
         for (auto i : wordDict) {
+            cout << i << endl;
             if (s.substr(0, i.size()) == i) {
                 if (i.size() == s.size()) ans.push_back(i);
                 else {
@@ -19,9 +20,8 @@ public:
             }
         }
         return ans;
-        
+
     }
-    
 };
 
 int main(){

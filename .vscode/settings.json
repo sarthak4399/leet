@@ -9,6 +9,7 @@
         "stack": "cpp",
         "new": "cpp",
         "__locale": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "bitset": "cpp"
     }
 }

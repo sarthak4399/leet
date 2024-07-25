@@ -16,7 +16,6 @@ public:
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
         ListNode* cur = dummy;
-
         while (cur->next != nullptr) {
             if (cur->next->val == val) {
                 cur->next = cur->next->next;
@@ -25,9 +24,7 @@ public:
             }
         }
         
-
         return dummy->next;
-        
     }
 };
 
@@ -44,8 +41,7 @@ int main (){
     //     cout << temp->val << " ";
     // }
     int val = 6 ;
-
-    s.removeElements( head , val);
+    s.removeElements( head , 4);
     for (ListNode* temp = head; temp != NULL; temp = temp->next) {
         cout << temp->val << " ";
     }

@@ -12,7 +12,6 @@ public:
         for (int i = 0 ; i < chalk.size();i++){
             sum += chalk[i] ;
         }
-        cout << sum << endl ;
         k = k % sum ;
         for (int i = 0 ; i < chalk.size();i++){
             if (k < chalk[i]){

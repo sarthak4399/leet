@@ -33,7 +33,6 @@ public:
         	vector<int> v(count,ele);
         	result.insert(result.end(),v.begin(),v.end());
 
-
         }
         return result;
     }

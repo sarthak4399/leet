@@ -44,7 +44,7 @@ private:
             num = num / 2;
             binary.push_back(remainder);
         }
-
+        
         reverse(binary.begin(), binary.end());
         return binary;
     }

@@ -69,25 +69,26 @@ public:
         int n = nums.size();
         sort(nums.begin(), nums.end());
         
-        vector<vector<long long>> dp(n, vector<long long>(n, -1));
+        vector<long long> prefixSum(n), suffixSum(n);
+        prefixSum[0] = nums[0];
+        suffixSum[n - 1] = nums[n - 1];
         
-        auto calcCost = [&](int i, int j) {
-            if (i > j) return 0;
-            if (dp[i][j] != -1) return dp[i][j];
-            
-            int mid = (i + j) / 2;
+        for (int i = 1; i < n; ++i) {
+            prefixSum[i] = prefixSum[i - 1] + nums[i];
+            suffixSum[n - i - 1] = suffixSum[n - i] + nums[n - i - 1];
+        }
+        
+        long long minCost = LLONG_MAX;
+        for (int i = 0; i < n; ++i) {
             long long cost = 0;
-            for (int k = i; k <= j; ++k) {
-                cost += abs(nums[k] - nums[mid]);
-            }
-            
-            dp[i][j] = min(calcCost(i, mid - 1) + calcCost(mid + 1, j) + (j - i + 1) * cost2,
-                          calcCost(i, mid) + calcCost(mid + 1, j) + (j - i + 1) * cost1);
-            
-            return dp[i][j];
-        };
+            cost += (i * 1LL * nums[i]) - prefixSum[i];
+            cost += suffixSum[i] - (n - i - 1) * 1LL * nums[i];
+            cost += min(i, n - i - 1) * 1LL * cost2;
+
+            minCost = min(minCost, cost);
+        }
         
-        return calcCost(0, n - 1) % 1000000007;
+        return minCost % 1000000007;
     }
 };
 

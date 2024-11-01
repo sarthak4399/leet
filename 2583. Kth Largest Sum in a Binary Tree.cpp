@@ -20,8 +20,8 @@ public:
 
     }
 private:
-    long long return_levlarsum(){
-        
+    long long return_levlarsum(int level , int *){
+
     }
 };
 int main(){

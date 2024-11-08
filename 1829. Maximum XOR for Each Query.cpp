@@ -29,7 +29,7 @@ int main () {
     vector <int> nums ={0,1,1,3} ;
     int maxbit = 2 ;
     vector <int> res = s.getMaximumXor(nums,maxbit) ;
-    for(int val : nums) {
+    for(int val : res) {
         cout << val  ;
     }
 }

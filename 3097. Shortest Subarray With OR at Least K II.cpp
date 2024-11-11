@@ -31,6 +31,6 @@ public:
 
 int main(){
     Solution s ;
-    vector<int> nums ={1,2,3} ;
-    cout << s.minimumSubarrayLength(nums,2) <<endl ;
+    vector<int> nums ={2,1,9,12} ;
+    cout << s.minimumSubarrayLength(nums,21) <<endl ;
 }

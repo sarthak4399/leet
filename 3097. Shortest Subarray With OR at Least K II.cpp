@@ -1,33 +1,48 @@
 #include<iostream>
 #include<vector>
-using namespace std ;
-
-
+using namespace std;
 
 class Solution {
 public:
     int minimumSubarrayLength(vector<int>& nums, int k) {
-        int n = nums.size();
-        vector<int> prefix(n+1, 0);
-        for(int i = 0; i < n; i++) {
-            prefix[i+1] = prefix[i] + nums[i];
-        }
-        int res = n+1;
-        vector<int> ans ;
-        for(int i = 0; i <= n; i++) {
-            while(ans.size() && prefix[i] - prefix[ans.front()] >= k) {
-                res = min(res, i - ans.front());
-                ans.erase(ans.begin());
+        int minLength = INT_MAX;
+        int windowStart = 0;
+        int windowEnd = 0;
+        vector<int> bitCounts(32, 0);
+
+        while (windowEnd < nums.size()) {
+            updateBitCounts(bitCounts, nums[windowEnd], 1);
+
+            while (windowStart <= windowEnd && convertBitCountsToNumber(bitCounts) >= k) {
+                minLength = min(minLength, windowEnd - windowStart + 1);
+                updateBitCounts(bitCounts, nums[windowStart], -1);
+                windowStart++;
             }
-            while(ans.size() && prefix[i] <= prefix[ans.back()]) {
-                ans.pop_back();
-            }
-            ans.push_back(i);
+            windowEnd++;
         }
-        return res == n+1 ? -1 : res;
+
+        return minLength == INT_MAX ? -1 : minLength;
+    }
+
+private:
+    void updateBitCounts(vector<int>& bitCounts, int number, int delta) {
+        for (int bitPosition = 0; bitPosition < 32; bitPosition++) {
+            if ((number >> bitPosition) & 1) {
+                bitCounts[bitPosition] += delta;
+            }
+        }
+    }
+
+    int convertBitCountsToNumber(const vector<int>& bitCounts) {
+        int result = 0;
+        for (int bitPosition = 0; bitPosition < 32; bitPosition++) {
+            if (bitCounts[bitPosition] > 0) {
+                result |= (1 << bitPosition);
+            }
+        }
+        return result;
     }
 };
-
 
 int main(){
     Solution s ;

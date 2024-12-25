@@ -1,41 +1,46 @@
 #include <iostream>
 #include <vector>
-using namespace std ;
-
-
+using namespace std;
 
 class Solution {
 public:
     vector<int> maximumBeauty(vector<vector<int>>& items, vector<int>& queries) {
-        int n = items.size();
-        int m = queries.size();
-        vector<int> res(m, 0);
-        for(int i = 0; i < m; i++) {
-            int q = queries[i];
-            int maxBeauty = 0;
-            for(int j = 0; j < n; j++) {
-                int beauty = 0;
-                bool found = false;
-                for(int k = 0; k < items[j].size(); k++) {
-                    if(items[j][k] == q) {
-                        if(!found) {
-                            beauty += q;
-                            found = true;
-                        }
-                        beauty += q;
-                    } else if(items[j][k] > 0) {
-                        beauty += items[j][k];
-                    }
-                }
-                if(found) {
-                    maxBeauty = max(maxBeauty, beauty);
-                }
-            }
-            res[i] = maxBeauty;
+        vector<int> ans(queries.size());
+        
+        sort(items.begin(), items.end(),
+             [](vector<int>& a, vector<int>& b) { return a[0] < b[0]; });
+        
+        int maxBeauty = items[0][1];
+        for (int i = 0; i < items.size(); i++) {
+            maxBeauty = max(maxBeauty, items[i][1]);
+            items[i][1] = maxBeauty;
         }
-        return res;
+        
+        for (int i = 0; i < queries.size(); i++) {
+            ans[i] = binarySearch(items, queries[i]);
+        }
+        
+        return ans;
+    }
+    
+    int binarySearch(vector<vector<int>>& items, int targetPrice) {
+        int left = 0;
+        int right = items.size() - 1;
+        int maxBeauty = 0;
+        
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (items[mid][0] > targetPrice) {
+                right = mid - 1;
+            } else {
+                maxBeauty = max(maxBeauty, items[mid][1]);
+                left = mid + 1;
+            }
+        }
+        return maxBeauty;
     }
 };
+
 int main(){
     Solution s ;
     vector<vector<int>> items = {{10,1000}} ;

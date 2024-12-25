@@ -6,26 +6,26 @@ using namespace std;
 class Solution {
 public:
     long long countFairPairs(vector<int>& nums, int lower, int upper) {
-        sort(nums.begin(), nums.end());  // Sorting is crucial - must be uncommented
-        return countLessEqual(nums, upper) - countLessEqual(nums, lower - 1);
+        sort(nums.begin(), nums.end());
+        return countPairs(nums, upper) - countPairs(nums, lower - 1);
     }
     
 private:
-    long long countLessEqual(vector<int>& nums, int target) {
-        long long count = 0;
-        int left = 0;
-        int right = nums.size() - 1;
+    long long countPairs(vector<int>& nums, long long target) {
+        long long res = 0;
+        int n = nums.size();
+        int left = 0, right = n - 1;
         
         while (left < right) {
-            long long sum = nums[left] + nums[right];
+            long long sum = (long long)nums[left] + nums[right];
             if (sum <= target) {
-                count += right - left;
+                res += right - left;
                 left++;
             } else {
                 right--;
             }
         }
-        return count;
+        return res;
     }
 };
 

@@ -7,7 +7,7 @@
       "request": "launch",
       "args": [],
       "cwd": "/Users/sarthakkhandare/Documents/leet",
-      "program": "/Users/sarthakkhandare/Documents/leet/build/Debug/outDebug"
+      "program": "/Users/sarthakkhandare/Documents/leet/a.out" // Ensure this path is correct
     }
   ]
 }
